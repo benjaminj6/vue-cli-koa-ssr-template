@@ -1,13 +1,23 @@
-# vue-cli-template
+# vue-cli-koa-srr-template
 
-> A simple Vue.js CLI template for client-side and server-side rendering.
+> A simple Vue.js CLI template for client-side and server-side rendering using a Koa.js 2 server.
+>
+>Forked from [vue-cli-template](https://github.com/xpepermint/vue-cli-template) and modified to work with Koa2 server.
 
 ## Related Projects
 
 * [vue-webpack](https://github.com/xpepermint/vue-webpack): Webpack configuration object generator for Vue.js.
 * [vue-builder](https://github.com/xpepermint/vue-builder): Server-side and client-side rendering for Vue.js.
+
+*Express*
+
 * [express-vue-builder](https://github.com/xpepermint/express-vue-builder): Vue.js server-side rendering middleware for Express.js.
 * [express-vue-dev](https://github.com/xpepermint/express-vue-dev): Vue.js development server middleware for Express.js.
+* [vue-cli-template](https://github.com/xpepermint/vue-cli-template): Server-side and client-side rendering app template for Vue.js and Express.js server.
+
+
+*Koa2*
+
 * [koa-vue-builder](https://github.com/kristianmandrup/koa-vue-builder): Vue.js server-side rendering middleware for Koa.js.
 * [koa-vue-dev](https://github.com/kristianmandrup/koa-vue-dev): Vue.js development server middleware for Koa.js.
 
@@ -36,7 +46,7 @@ This template represents a minimal [Vue.js](http://vuejs.org) application setup.
 ## License (MIT)
 
 ```
-Copyright (c) 2016 Kristijan Sedlak <xpepermint@gmail.com>
+Copyright (c) 2016 Kristian Mandrup <kmandrup@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -1,6 +1,8 @@
-const express = require('express');
+const koa = require('koa');
+const router = require('koa-router')();
+const serve = require('koa-static');
 const {vueHandler} = require('./middlewares/vue');
-const {router} = require('./middlewares/router');
+const HtmlWriterStream = require('./html-writer-stream');
 
 /*
 * HTTP server class.
@@ -24,19 +26,42 @@ exports.Server = class {
   */
 
   listen() {
-    return new Promise((resolve) => {
+    return async () => {
       if (this._server) return this;
 
-      this._app = express();
-      this._app.use((req, res, next) => {
-        req.config = this._config;
-        next();
+      this._app = new koa();
+
+      // serve static assets
+      let staticPath = 'dist/client';
+      app.use(serve(staticPath));
+
+      // basic middlewware to set config on ctx
+      app.use(async(ctx, next) => {
+        ctx.config = this._config;
+        await next();
       });
+
+      // streaming from root route
+      router.get('/', async (ctx, next) => {
+        ctx.type = 'html';
+        if (ctx.vue) {
+          let stream = ctx.vue.renderToStream();
+          let htmlWriter = new HtmlWriterStream();
+          ctx.body = stream.pipe(htmlWriter);
+        } else {
+          console.log('no .vue object found on ctx. No SSR streaming possible :()');
+        }
+        await next();
+      });
+
+      app
+        .use(router.routes())
+        .use(router.allowedMethods());
+
       this._app.use(vueHandler(this._config));
-      this._app.use(router(this._config));
 
       let {serverPort, serverHost} = this._config;
-      this._server = this._app.listen(serverPort, serverHost, resolve);
+      this._server = await this._app.listen(serverPort, serverHost);
     });
   }
 
@@ -45,10 +70,10 @@ exports.Server = class {
   */
 
   close() {
-    return new Promise((resolve) => {
+    return async () => {
       if (!this._server) return this;
 
-      this._server.close(resolve);
+      await this._server.close();
 
       this._server = null;
       this._app = null;

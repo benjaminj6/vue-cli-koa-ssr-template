@@ -1,11 +1,9 @@
-const express = require('express');
-
 /*
 * Returns the Vue.js production rendering middleware.
 */
 
 exports.vueBundleRenderer = function (config) {
-  let {bundleRenderer} = require('express-vue-builder');
+  let {bundleRenderer} = require('koa-vue-builder');
 
   return bundleRenderer(`${__dirname}/../../../dist/server/bundle.js`);
 }
@@ -16,7 +14,7 @@ exports.vueBundleRenderer = function (config) {
 
 exports.vueDevServer = function (config) {
   let {build} = require('vue-webpack');
-  let {devServer} = require('express-vue-dev');
+  let {devServer} = require('koa-vue-dev');
 
   return devServer({
     server: build({

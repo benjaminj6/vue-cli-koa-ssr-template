@@ -1,5 +1,5 @@
 import {app} from '.';
 
-export default (ctx) => {
-  return Promise.resolve(app);
+export default async (ctx) => {
+  return await app;
 };
