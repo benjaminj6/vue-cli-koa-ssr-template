@@ -1,6 +1,6 @@
 {
   "name": "vue-cli-koa-ssr-template",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "A simple Vue.js CLI template supporting server-side and client-side rendering for Koa.js 2",
   "main": "./meta.json",
   "repository": {
