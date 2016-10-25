@@ -14,7 +14,7 @@ module.exports = class HtmlWriterStream extends Transform {
     this.push(`<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>${options.title || 'No title'}</title>
+  <title>${this.options.title || 'No title'}</title>
   <link href="/bundle.css" rel='stylesheet' type='text/css'>
 </head><body>${data}`);
 

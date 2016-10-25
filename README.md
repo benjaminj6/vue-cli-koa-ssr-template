@@ -2,7 +2,8 @@
 
 > A simple Vue.js CLI template for client-side and server-side rendering using a Koa.js 2 server.
 >
->Forked from [vue-cli-template](https://github.com/xpepermint/vue-cli-template) and modified to work with Koa2 server.
+>Forked from [vue-cli-template](https://github.com/xpepermint/vue-cli-template) and modified to work with Koa2 server and async/await.
+ Requires Node 7+ (or Babel with async/await configuration).
 
 ## Related Projects
 
@@ -27,11 +28,13 @@ This is a project template for [vue-cli](https://github.com/vuejs/vue-cli).
 
 ``` bash
 $ npm install -g vue-cli
-$ vue init xpepermint/vue-cli-template my-project
+$ vue init kristianmandrup/vue-cli-koa-ssr-template my-project
 $ cd my-project
 $ npm install
 $ npm run start
 ```
+
+Even better: fork this repo and modify it to suit your own preferences ;)
 
 ### What's Included
 
